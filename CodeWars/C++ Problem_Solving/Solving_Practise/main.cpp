@@ -1,68 +1,26 @@
 #include <iostream>
 using namespace std;
-void merge(int arr[] , int l , int m , int r)
+void heapify(int arr[] , int n , int i)
 {
-    int n1 = m-l+1; //in case the array is odd sized then left subarray has greater size by 1
-    int n2 = r-m;
-    int *L = new int[n1] , *R=new int[n2];
-
-    int i , j , k;
-    for(i = 0;i < n1 ;i++)
+    int l = 2*i+1;
+    int r = 2*i+2;
+    int max = i;
+    if(l < n && arr[l] > arr[max])
     {
-        L[i]=arr[l+i];
+        max = l;
     }
-    for(j = 0 ; j < n2 ;j++)
+    if(r < n && arr[r] > arr[max])
     {
-        R[j]=arr[m+1+j];
+        max=r;
     }
-    i = j =0;
-    k = l;
-    while(i < n1 && j < n2)
+    if(max!=i)
     {
-        if(L[i] <= R[j])
-        {
-            arr[k]=L[i];
-            i++;
-        }
-        else
-        {
-            arr[k] = R[j];
-            j++;
-        }
-        k++;
-    }
-    while(i < n1)
-    {
-        arr[k] = L[i];
-        i++;
-        k++;
-    }
-    while(j < n2)
-    {
-        arr[k] = R[j];
-        j++;
-        k++;
-    }
-}
-void mergeSort(int arr[] , int l , int r)
-{
-    if(l < r)
-    {
-        int m = l + (r - l) / 2;
-        mergeSort(arr , l , m);
-        mergeSort(arr , m + 1 , r);
-
-        merge(arr , l , m ,r);
+        swap(arr[i] , arr[max]);
+        heapify(arr , n ,max);
     }
 }
 int main()
 {
-    int arr[]={60 , 10 , 20 , 5 ,60 ,70};
-    int n= sizeof(arr) / sizeof(arr[0]);
-    mergeSort(arr , 0 , n-1);
-    for(int i=0;i<n;i++)
-    {
-        cout<<arr[i]<<" ";
-    }
+
     return 0;
 }
