@@ -19,8 +19,33 @@ void heapify(int arr[] , int n , int i)
         heapify(arr , n ,max);
     }
 }
+void buildHeap(int arr[] , int n)
+{
+    for(int i=n/2-1;i>=0;i--)
+    {
+        heapify(arr , n ,i);
+    }
+}
+void heapSort(int arr[] , int n)
+{
+    for(int i=n-1; i>=0;i--)
+    {
+        swap(arr[0] , arr[i]);
+        heapify(arr , i ,0);
+    }
+}
 int main()
 {
-
+    int size; cin>>size;
+    int arr[size];
+    for(int i=0;i<size;i++)
+    {
+        cin>>arr[i];
+    }
+    heapSort(arr , size);
+    for(int i=0;i<size;i++)
+    {
+        cout<<arr[i]<<" ";
+    }
     return 0;
 }
