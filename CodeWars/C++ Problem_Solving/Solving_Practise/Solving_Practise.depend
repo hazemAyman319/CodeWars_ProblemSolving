@@ -1,5 +1,6 @@
 # depslib dependency file v1.0
-1692954246 source:c:\users\hp\documents\courses\programming and computing\problem solving\codewars\c++ problem_solving\solving_practise\main.cpp
+1692986799 source:c:\users\hp\documents\courses\programming and computing\problem solving\codewars\c++ problem_solving\solving_practise\main.cpp
 	<iostream>
-	<string>
+	<vector>
+	<algorithm>
 
