@@ -6,49 +6,45 @@
 using namespace std;
 int main()
 {
-   int num ,counter=0, freq1[27]={0} , freq2[27]={0};
-   cin>>num;
-   char word1[num] , word2[num];
-   for(int i=0;i<num;i++)
-   {
-       cin>>word1[i];
-   }
-   for(int i=0;i<num;i++)
-   {
-       cin>>word2[i];
-   }
-   for(int i=0;i<num;i++)
-   {
-       freq1[word1[i]-'a']++;
-       freq2[word2[i]-'a']++;
-   }
-   for(int i=0;i<27;i++)
-   {
-       if(freq1[i]!=freq2[i])
-       {
-           counter+=max(freq1[i] , freq2[i])-min(freq1[i] , freq2[i]);
-       }
-   }
-   cout<<counter/2;
-}
-
-/*
-string word1 , word2;
-    bool freq1[27]={false};
-    bool freq2[27]={false};
-    int num , counter=0;cin>>num;
-    cin>>word1>>word2;
-    for(int i=0;i<num;i++)
+    int cases , freq[100000]={0};cin>>cases;
+    while(cases--)
     {
-        freq1[word1[i]-'a']=true;
-        freq2[word2[i]-'a']=true;
-    }
-    for(int i=0;i<27;i++)
-    {
-        if(freq1[i]!=freq2[i])
+        bool adding , subtracting , division , multiply = false;
+        int num1 , num2 , counter=0;
+        cin>>num1>>num2;
+        for(int i=1;i<=4;i++)
         {
-            counter++;
+            if(adding==false)
+            {
+                freq[num1+num2]++;
+                adding=true;
+            }
+            if(subtracting==false)
+            {
+                freq[abs(num1-num2)]++;
+                freq[abs(num2-num1)]++;
+                subtracting==true;
+            }
+            if(division==false)
+            {
+                freq[(int)num1/num2]++;
+                freq[(int)num2/num1]++;
+                division==true;
+            }
+            if(multiply==false)
+            {
+                freq[num1*num2]++;
+                freq[num2*num1]++;
+                multiply==true;
+            }
         }
+        for(int i=0;i<100000;i++)
+        {
+            if(freq[i]>0)
+            {
+                counter++;
+            }
+        }
+        cout<<counter<<endl;
     }
-    cout<<counter;
-*/
+}
