@@ -19,7 +19,7 @@ int main()
             end = m2;
         }
     }
-    int ans = arr[start] , ansIdx = start;
+    int ans = arr[start] , ansIdx = start; //this part of code is for the last 3 elements
     for(int i=start;i<=end;i++)
     {
         if(arr[i]>ans)
@@ -29,6 +29,5 @@ int main()
         }
     }
     cout<<ansIdx;
-    cout<<"index "<<m1<<" "<<": "<<arr[m1];
     return 0;
 }

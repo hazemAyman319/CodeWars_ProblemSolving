@@ -1,8 +1,5 @@
 # depslib dependency file v1.0
-1693926403 source:c:\users\hp\documents\courses\programming and computing\problem solving\codewars\c++ problem_solving\solving_practise\main.cpp
+1694530728 source:c:\users\hp\documents\courses\programming and computing\problem solving\codewars\c++ problem_solving\solving_practise\main.cpp
 	<iostream>
-	<vector>
-	<algorithm>
-	<iterator>
 	<bits\stdc++.h>
 
