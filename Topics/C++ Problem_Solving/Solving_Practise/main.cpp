@@ -2,27 +2,88 @@
 #include <bits\stdc++.h>
 using namespace std;
 #define ll long long
-const int N = 1e5;
-int n, x;
-vector<int> V;
+int q , n;
+string command;
+bool isReversed;
+vector<int>v;
+deque<int>dq;
 int main()
 {
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
     cout.tie(nullptr);
-
-    cin>>n;
-    for(int i=0; i<n; i++){
-        cin>>x;
-        v.push_back(x);
-    }
-    sort(v.begin() , v.end());
-    for(int i=0; i<n; i++)
+    cin>>q;
+    while(q--)
     {
-        cout<<v[i]<<endl;
-    }
-    for(int x : v){
-        cout << x <<endl;
+        cin>>command;
+        if(command == "back")
+        {
+            if(dq.empty())
+            {
+                cout<<" No Job For Ada! "<<endl;
+            }
+            else
+            {
+                if(isReversed)
+                {
+                    cout<<dq.front()<<endl;
+                    dq.pop_front();
+                }
+                else
+                {
+                    cout<<dq.back()<<endl;
+                    dq.pop_back();//O(1)
+                }
+            }
+        }
+        else if(command == "front")
+        {
+            if(dq.empty())
+            {
+                cout<<" No Job For Ada! "<<endl;
+            }
+            else
+            {
+                if(isReversed)
+                {
+                    cout<<dq.back()<<endl;
+                    dq.pop_back();
+                }
+                else
+                {
+                    cout<<dq.front()<<endl;
+                    dq.pop_front();//O(1)
+                }
+            }
+        }
+        else if(command == "reverse")
+        {
+            isReversed = !isReversed;
+        }
+        else if(command == "push_back")
+        {
+            cin>>n;
+            if(isReversed)
+            {
+                dq.push_front(n);
+            }
+            else
+            {
+                dq.push_back(n);
+            }
+        }
+        else
+        {
+            cin>>n;
+            if(isReversed)
+            {
+                dq.push_back(n);
+            }
+            else
+            {
+                dq.push_front(n);
+            }
+        }
     }
     return 0;
 }
